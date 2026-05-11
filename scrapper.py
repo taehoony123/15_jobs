@@ -8,4 +8,22 @@ response = requests.get(url)
 
 soup = BeautifulSoup(response.text, "html.parser")
 
-soup.find_all()
+lis = soup.find_all("li", class_="c_col")
+# print(len(lis))
+# print(lis)
+
+for li in lis[0:3]:
+    # company = li.find("a", class_="cpname").text.strip()
+    # print(company)
+
+    # title = li.find("div", class_="cell_mid").find("div", class_="cl_top").find("a").text.strip()
+    # print(title)
+
+    # location = li.find("div", class_="cell_mid").find("div", class_="cl_md").find_all("span")[0].text.strip()
+    # print(location)
+
+    # career = li.find("div", class_="cell_mid").find("div", class_="cl_md").find_all("span")[1].text.strip()
+    # print(career)
+
+    link = li.find("div", class_="cell_mid").find("div", class_="cl_top").find("a").get("href")
+    print(link)
