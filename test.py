@@ -1,5 +1,5 @@
-from scrapper import search_incruit
+from scrapper import search_saramin
 
-results = search_incruit("자바",2)
+results = search_saramin("자바",2)
 
 print(results)

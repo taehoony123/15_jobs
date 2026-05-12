@@ -51,34 +51,18 @@ def search_saramin(keyword,pages):
         
         response = requests.get(url)
         soup = BeautifulSoup(response.text, "html.parser")
-        lis = soup.find_all("li", class_="c_col")
+        lis = soup.find_all("div", class_="item_recruit")
 
         #2. 각 페이지에서 회사명, 공고명, 지역, 경력, 공고 링크를 추출하여 jobs 리스트에 저장
         for li in lis:
-            company = li.find("a", class_="cpname").text.strip()
-            print(company)
-
-            title = li.find("div", class_="cell_mid").find("div", class_="cl_top").find("a").text.strip()
+            title = li.find("div", class_="area_job").find("h2", class_="job_tit").find("a", class_= "data_layer").find("span").text.strip()
             print(title)
 
-            location = li.find("div", class_="cell_mid").find("div", class_="cl_md").find_all("span")[0].text.strip()
-            print(location)
-
-            career = li.find("div", class_="cell_mid").find("div", class_="cl_md").find_all("span")[1].text.strip()
-            print(career)
-
-            link = li.find("div", class_="cell_mid").find("div", class_="cl_top").find("a").get("href")
-            print(link)
-
             job_data = {
-                "company": company,
-                "title": title,
-                "location": location,
-                "career": career,
-                "link": link
+                "title": title
             }
             jobs.append(job_data)
-
+    
         return jobs
 
 
