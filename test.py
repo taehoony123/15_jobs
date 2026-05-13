@@ -1,5 +1,5 @@
 from scrapper import search_saramin
 
-results = search_saramin("자바",2)
+search_saramin("lg", 1)
 
-print(results)
+print("크롤링 완료")

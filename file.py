@@ -1,5 +1,6 @@
 import csv
 from scrapper import search_incruit
+from scrapper import search_saramin
 
 def save_to_csv(jobs):
     with open('download.csv', 'w', encoding='cp949') as file:
