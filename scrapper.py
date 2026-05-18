@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-def search_incruit(keyword,pages):
+def search_ai_news(keyword, pages):
     jobs = []
     #1. 페이지 번호를 0, 30, 60, 90, 120으로 변경하여 5페이지까지 크롤링
     for i in range(pages):
@@ -48,11 +48,10 @@ def search_saramin(keyword,pages):
         
         page = i + 1
         url = f"https://www.saramin.co.kr/zf_user/search?search_area=main&search_done=y&search_optional_item=n&searchType=recently&searchword={keyword}&recruitPage={page}&recruitSort=relation&recruitPageCount=40&inner_com_type=&company_cd=0%2C1%2C2%2C3%2C4%2C5%2C6%2C7%2C9%2C10&show_applied=&quick_apply=&except_read=&ai_head_hunting="
-
         header = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"}
         response = requests.get(url,headers=header)
         soup = BeautifulSoup(response.text, "html.parser")
-        lis = soup.find_all("div", class_="item_recruit")
+        lis = soup.select("div.tn12Ei8S4IpP30tPh4CK.desktop_mode.api_subject_bx fds-root-overflow-reset")
 
         #2. 각 페이지에서 회사명, 공고명, 지역, 경력, 공고 링크를 추출하여 jobs 리스트에 저장
         for li in lis:

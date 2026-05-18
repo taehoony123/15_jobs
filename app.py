@@ -18,12 +18,6 @@ def search():
     jobs =search_incruit(keyword, 1)
     return render_template("search.html", jobs = enumerate(jobs) , keyword = keyword)
 
-@app.route("/search_saramin")
-def search_saramins():
-    keyword = request.args.get("keyword")
-    jobs =search_saramin(keyword, 1)
-    return render_template("search.html", jobs = enumerate(jobs) , keyword = keyword)
-
 @app.route("/file")
 def file():
     keyword = request.args.get("keyword")
